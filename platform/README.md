@@ -38,6 +38,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Simulador MRUV
+
+The laboratory page includes a Three.js viewer of the rail and cart.
+
+With the dev server running, open `/laboratories/mruv`. The scene loads `public/models/riel-y-carrito.glb` and the parameters in `public/data/mruv.json`. Motion along the rail uses `x = x0 + v0*t + 0.5*a*t^2`.
+
+To rebuild the GLB from the original binary STL (millimeters):
+
+```sh
+python3 scripts/convert-riel-stl.py ruta/Riel_y_carrito_v2.stl public/models/riel-y-carrito.glb
+```
+
+The script needs Python packages `trimesh`, `numpy`, `scipy`, and `fast-simplification`. It welds the STL, keeps the cart as its own mesh, decimates the dense bodies, and writes the model in meters.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

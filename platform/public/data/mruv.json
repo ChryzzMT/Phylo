@@ -1,0 +1,16 @@
+{
+  "name": "MRUV — riel y carrito",
+  "description": "Parámetros del movimiento rectilíneo uniformemente acelerado a lo largo del riel. x se mide en metros desde la posición modelada del carrito, en el sentido positivo del riel.",
+  "model": "/models/riel-y-carrito.glb",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "velocity": "m/s",
+    "acceleration": "m/s^2"
+  },
+  "x0": 0,
+  "v0": 0.08,
+  "a": 0.1,
+  "railLength": 1.177,
+  "equation": "x = x0 + v0*t + 0.5*a*t*t"
+}
