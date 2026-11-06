@@ -27,7 +27,7 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+Run these commands inside `platform/` (the Astro app), not the git repository root. After pulling, run `npm install` again so `three` is installed. Without that, Vite reports `Failed to resolve import "three"`.
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |

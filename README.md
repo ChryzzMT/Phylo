@@ -79,6 +79,8 @@ The first release focuses on building the core platform and publishing the initi
 
 The web platform lives in `platform/` and is built with Astro.
 
+Run these commands from the repository root. `npm install` has to run inside `platform/` so the `three` package is installed. If the dev server says `Failed to resolve import "three"`, run `npm install` in `platform/` again.
+
 ```sh
 cd platform
 npm install
