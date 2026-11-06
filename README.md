@@ -77,7 +77,15 @@ The first release focuses on building the core platform and publishing the initi
 
 # Getting Started
 
-Project setup instructions will be added once the Astro platform has been initialized.
+The web platform lives in `platform/` and is built with Astro.
+
+```sh
+cd platform
+npm install
+npm run dev
+```
+
+Open [http://localhost:4321/laboratories/mruv](http://localhost:4321/laboratories/mruv) and scroll to **Simulador MRUV**. Use Reproducir, Pausar, and Reiniciar. The kinematic parameters (`x0`, `v0`, `a`, `railLength`) load from `platform/public/data/mruv.json` and are printed in the browser console.
 
 ---
 

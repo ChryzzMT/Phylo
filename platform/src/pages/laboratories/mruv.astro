@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
 import '../../styles/mruv-laboratory.css';
+import '../../styles/mruv-simulator.css';
 ---
 
 <MainLayout title="MRUV Laboratory — PHYLO">
@@ -69,7 +70,7 @@ import '../../styles/mruv-laboratory.css';
 			</article>
 			<article class="mruv-resource">
 				<h3>Software</h3>
-				<p>Platform access is not connected yet.</p>
+				<p><a href="#simulador">Open the MRUV simulator</a> on this page.</p>
 			</article>
 			<article class="mruv-resource">
 				<h3>GitHub</h3>
@@ -78,15 +79,81 @@ import '../../styles/mruv-laboratory.css';
 		</div>
 	</section>
 
-	<section class="mruv-section mruv-application" aria-labelledby="application-title">
-		<h2 id="application-title">Interactive Application</h2>
+	<section class="mruv-section mruv-simulator" id="simulador" lang="es" aria-labelledby="simulator-title">
+		<h2 id="simulator-title">Simulador MRUV</h2>
 		<p>
-			The application will support the collection and review of measurements from the MRUV
-			laboratory experience.
+			El carrito avanza sobre el riel con movimiento rectilíneo uniformemente acelerado.
+			En cada cuadro del visor, la posición a lo largo del riel se calcula con
+			x = x₀ + v₀t + ½at².
 		</p>
-		<button class="mruv-application__button" type="button" disabled>Launch Application</button>
-		<p class="mruv-application__availability">Application connection is not available yet.</p>
+
+		<div class="mruv-simulator__layout">
+			<div class="mruv-simulator__viewport" id="mruv-viewport">
+				<canvas
+					id="mruv-canvas"
+					aria-label="Vista 3D del riel y el carrito. El carrito se mueve a lo largo del riel."
+				></canvas>
+				<p id="mruv-status" class="mruv-simulator__status" role="status">Cargando el modelo del riel…</p>
+			</div>
+
+			<div class="mruv-simulator__panel">
+				<p class="mruv-simulator__equation" id="mruv-equation">x = 0.00 + 0.08 t + ½ (0.10) t²</p>
+				<div class="mruv-simulator__buttons">
+					<button type="button" id="mruv-play">Reproducir</button>
+					<button type="button" id="mruv-pause" disabled>Pausar</button>
+					<button type="button" id="mruv-reset">Reiniciar</button>
+				</div>
+
+				<label class="mruv-simulator__field" for="mruv-v0">
+					<span>Velocidad inicial v₀</span>
+					<span class="mruv-simulator__field-value"><span id="mruv-v0-value">0.08</span> m/s</span>
+					<input id="mruv-v0" type="range" min="-0.5" max="1.5" step="0.01" value="0.08" />
+				</label>
+
+				<label class="mruv-simulator__field" for="mruv-a">
+					<span>Aceleración a</span>
+					<span class="mruv-simulator__field-value"><span id="mruv-a-value">0.10</span> m/s²</span>
+					<input id="mruv-a" type="range" min="-1.5" max="1.5" step="0.01" value="0.1" />
+				</label>
+
+				<p class="mruv-simulator__hint">Los cambios de v₀ y a se aplican al reiniciar.</p>
+
+				<dl class="mruv-simulator__facts">
+					<div>
+						<dt>Posición inicial x₀</dt>
+						<dd id="mruv-x0">0.00 m</dd>
+					</div>
+					<div>
+						<dt>Longitud útil del riel</dt>
+						<dd id="mruv-rail">—</dd>
+					</div>
+				</dl>
+
+				<dl class="mruv-simulator__readout">
+					<div>
+						<dt>Tiempo</dt>
+						<dd id="mruv-time">0.00 s</dd>
+					</div>
+					<div>
+						<dt>Posición x</dt>
+						<dd id="mruv-x">0.00 m</dd>
+					</div>
+					<div>
+						<dt>Velocidad v</dt>
+						<dd id="mruv-v">0.00 m/s</dd>
+					</div>
+				</dl>
+
+				<p class="mruv-simulator__hint">Arrastra para girar la vista. La rueda acerca o aleja.</p>
+			</div>
+		</div>
 	</section>
+
+	<script>
+		import { mountMruvSimulator } from '../../scripts/mruv-simulator.js';
+
+		mountMruvSimulator(document.querySelector('#simulador'));
+	</script>
 
 	<section class="mruv-section" aria-labelledby="gallery-title">
 		<h2 id="gallery-title">Laboratory Gallery</h2>

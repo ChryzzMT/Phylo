@@ -1,0 +1,166 @@
+.mruv-simulator {
+	scroll-margin-top: 1.5rem;
+}
+
+.mruv-simulator__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1.8fr) minmax(16rem, 0.9fr);
+	gap: 1.25rem;
+	align-items: stretch;
+	margin-top: 1.5rem;
+}
+
+.mruv-simulator__viewport {
+	position: relative;
+	height: min(68vh, 560px);
+	min-height: 280px;
+	overflow: hidden;
+	border: 1px solid #d9e1e8;
+	border-radius: 0.75rem;
+	background-color: #e7eef4;
+}
+
+.mruv-simulator__viewport canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	touch-action: none;
+}
+
+.mruv-simulator__status {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	left: 0.75rem;
+	margin: 0;
+	padding: 0.4rem 0.7rem;
+	border-radius: 0.375rem;
+	background-color: rgb(255 255 255 / 0.92);
+	color: #243b53;
+	font-size: 0.875rem;
+	line-height: 1.4;
+}
+
+.mruv-simulator__panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1.25rem;
+	border: 1px solid #d9e1e8;
+	border-radius: 0.75rem;
+	background-color: #ffffff;
+	box-shadow: 0 0.25rem 0.75rem rgb(16 42 67 / 0.06);
+}
+
+.mruv-simulator__equation {
+	margin: 0;
+	color: #102a43;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.mruv-simulator__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.mruv-simulator__buttons button {
+	padding: 0.65rem 0.9rem;
+	border: 1px solid #243b53;
+	border-radius: 0.375rem;
+	background-color: #ffffff;
+	color: #243b53;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.mruv-simulator__buttons button:first-child {
+	background-color: #243b53;
+	color: #ffffff;
+}
+
+.mruv-simulator__buttons button:hover:not(:disabled),
+.mruv-simulator__buttons button:focus-visible:not(:disabled) {
+	outline: 3px solid #829ab1;
+	outline-offset: 2px;
+}
+
+.mruv-simulator__buttons button:disabled {
+	border-color: #bcccdc;
+	background-color: #eaf2f8;
+	color: #627d98;
+	cursor: not-allowed;
+}
+
+.mruv-simulator__field {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0.35rem 0.75rem;
+	color: #243b53;
+	font-weight: 700;
+}
+
+.mruv-simulator__field input {
+	grid-column: 1 / -1;
+	width: 100%;
+	accent-color: #243b53;
+}
+
+.mruv-simulator__field-value {
+	font-variant-numeric: tabular-nums;
+	font-weight: 400;
+	color: #486581;
+}
+
+.mruv-simulator__hint,
+.mruv-simulator__facts,
+.mruv-simulator__readout {
+	margin: 0;
+	color: #486581;
+	font-size: 0.9375rem;
+	line-height: 1.5;
+}
+
+.mruv-simulator__facts,
+.mruv-simulator__readout {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.mruv-simulator__facts div,
+.mruv-simulator__readout div {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.mruv-simulator__facts dt,
+.mruv-simulator__readout dt {
+	font-weight: 700;
+	color: #243b53;
+}
+
+.mruv-simulator__facts dd,
+.mruv-simulator__readout dd {
+	margin: 0;
+	font-variant-numeric: tabular-nums;
+}
+
+.mruv-simulator__readout {
+	padding-top: 0.25rem;
+	border-top: 1px solid #d9e1e8;
+}
+
+@media (max-width: 860px) {
+	.mruv-simulator__layout {
+		grid-template-columns: 1fr;
+	}
+
+	.mruv-simulator__viewport {
+		height: 70vw;
+		min-height: 260px;
+	}
+}
